@@ -5,14 +5,17 @@ To start your Phoenix server:
   * Run `mix setup` to install and setup dependencies
   * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+# Application Details
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+  * We have 3 controllers to mock external apis sending csv files
+  * csv_fetcher folder is used to make api requests, get csv data and then write them to a file inside priv/csv_files
+  * exchange_rates folder is responsible to fetech exchange rates daily at 12 pm and update them in db
+  * revenue folder is responsible to read the stored csv files in priv/csv_files, modify the revenue with reveve * rate and the store in db
 
-## Learn more
+  * We are using Swarm library to distibute processes across all the nodes on the cluster 
+  * We are using Redix to managing distributed locking of database table
+  * We are using Quantum to shedule cron jobs 
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+
+
+
